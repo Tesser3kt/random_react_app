@@ -25,7 +25,7 @@ function App() {
   };
 
   const onDeleteButtonClick = (id: number) => {
-    console.log("Article " + id.toString() + " deleted.");
+    setArticles(articles.filter((article) => article.id !== id));
   };
 
   const [articles, setArticles] = useState([
@@ -58,7 +58,11 @@ function App() {
         <h1 className="text-center text-3xl font-bold">{title}</h1>
         <h2 className="text-center text-xl text-gray-600">({subtitle})</h2>
       </header>
-      <ArticleList articles={articles} onLikeButtonClick={onLikeButtonClick} />
+      <ArticleList
+        articles={articles}
+        onLikeButtonClick={onLikeButtonClick}
+        onDeleteButtonClick={onDeleteButtonClick}
+      />
     </div>
   );
 }
