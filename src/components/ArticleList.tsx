@@ -8,17 +8,20 @@ interface ArticleType {
 }
 interface ArticleListProps {
   articles: Array<ArticleType>;
+  onLikeButtonClick: (id: number) => void;
 }
 
-const ArticleList = ({ articles }: ArticleListProps) => {
+const ArticleList = ({ articles, onLikeButtonClick }: ArticleListProps) => {
   return (
     <div className="article-list m-auto max-w-screen-lg">
       {articles.map((article) => (
         <Article
+          key={article.id}
           id={article.id}
           heading={article.heading}
           content={article.content}
           likes={article.likes}
+          onLikeButtonClick={onLikeButtonClick}
         />
       ))}
     </div>
