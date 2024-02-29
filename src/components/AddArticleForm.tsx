@@ -1,8 +1,37 @@
-const AddArticleForm = () => {
+const AddArticleForm = (
+  onSubmitClick: (heading: string, content: string) => void
+) => {
+  let heading = "";
+  let content = "";
+
   return (
     <div className="form-container">
       <form className="add-article-form">
-        <div className="w-8 h-8 bg-red-500"></div>
+        <label htmlFor="heading">Nadpis</label>
+        <input
+          id="heading"
+          name="heading"
+          type="text"
+          className="heading"
+          onChange={(e) => (heading = e.target.value)}
+        />
+        <label htmlFor="content">Obsah</label>
+        <textarea
+          name="content"
+          id="content"
+          cols={30}
+          rows={10}
+          onChange={(e) => (content = e.target.value)}
+        ></textarea>
+        <button
+          type="submit"
+          onClick={(e) => {
+            e.preventDefault();
+            onSubmitClick(heading, content);
+          }}
+        >
+          Přidat
+        </button>
       </form>
     </div>
   );

@@ -30,7 +30,11 @@ function App() {
   };
 
   const onAddButtonClick = () => {
-    console.log("Add button clicked");
+    setShowForm(true);
+  };
+
+  const onSubmitClick = (heading: string, content: string) => {
+    setShowForm(false);
   };
 
   const [showForm, setShowForm] = useState(false);
@@ -69,15 +73,18 @@ function App() {
         onLikeButtonClick={onLikeButtonClick}
         onDeleteButtonClick={onDeleteButtonClick}
       />
-      <div className="flex justify-center mt-8">
-        <button
-          className="px-4 py-2 border rounded-md bg-blue-100 ring ring-blue-400 hover:bg-blue-200"
-          onClick={onAddButtonClick}
-        >
-          <span className="font-bold text-xl">Přidat článek</span>
-        </button>
-      </div>
-      {showForm && <AddArticleForm />}
+      {showForm ? (
+        <AddArticleForm onSubmitClick={onSubmitClick} />
+      ) : (
+        <div className="flex justify-center mt-8">
+          <button
+            className="px-4 py-2 border rounded-md bg-blue-100 ring ring-blue-400 hover:bg-blue-200"
+            onClick={onAddButtonClick}
+          >
+            <span className="font-bold text-xl">Přidat článek</span>
+          </button>
+        </div>
+      )}
     </div>
   );
 }
