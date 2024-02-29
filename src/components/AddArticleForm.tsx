@@ -1,6 +1,8 @@
-const AddArticleForm = (
-  onSubmitClick: (heading: string, content: string) => void
-) => {
+interface AddArticleFormProps {
+  onSubmitClick: (heading: string, content: string) => void;
+}
+
+const AddArticleForm = ({ onSubmitClick }: AddArticleFormProps) => {
   let heading = "";
   let content = "";
 
