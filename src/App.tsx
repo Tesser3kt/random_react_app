@@ -35,6 +35,15 @@ function App() {
 
   const onSubmitClick = (heading: string, content: string) => {
     setShowForm(false);
+    setArticles([
+      ...articles,
+      {
+        id: articles.length + 1,
+        heading: heading,
+        content: [content],
+        likes: 0,
+      },
+    ]);
   };
 
   const [showForm, setShowForm] = useState(false);
